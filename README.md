@@ -8,6 +8,18 @@ Connectifi is a cloud service that securely connects applications for interopera
 
 Let’s go through each step in detail.
 
+# Using the Customization Examples
+
+Connectifi is built to work with the brand and UX of your platform. To help you get started fast, this repo is home to a collection of code examples detailing how to customize the Connectifi Agent.  All the code is open source and can be found in the `/examples` directory.  To try it out:
+
+- clone this repo
+- `npm install`
+- `npm run dev`
+- go to http://localhost:9090/examples/index.html for a list of all examples
+
+Got a use case you don't see here? [Create an issue](https://github.com/connectifi-co/getting-started/issues/new) and let us know about it.
+
+**note:** For examples of how to use FDC3 API, the best place to start is with the [Connectifi FDC3 Sandbox](https://apps.connectifi-interop.com/sandbox).
 # Setting up the Agent
 
 The Connectifi Agent is a small javascript module that lives in your application and is used to make and manage the connection to the Connectifi service and translate this into a standard FDC3 API for the consuming application.   The module also provides some default UI which can be fully customized.
@@ -28,7 +40,7 @@ or, access via CDN:
 
 With Connectifi, applications participate in interop by connecting to the same directory.  The directory determines what applications can participate and what the security parameters will be.
 
-To connect to a directory, use the `createAgent` function exported from the agent-web module, and pass in the service URL and the identity of your application.  This will return a Promise resolving to a standard FDC3 API.
+To connect to a directory, use the `createAgent` function exported from the agent-web module, and pass in the service URL and the identity of your application.  This will return a Promise resolving to a standard [FDC3 API](https://fdc3.finos.org/docs/api/ref/DesktopAgent).
 
 ```js
 import { createAgent } from '@connectifi/agent-web';
@@ -241,3 +253,15 @@ App channels are very useful for more advanced orchestration of behavior between
 - publishing application data being shared outside of intents or other user actions
 - synchronizing user state for a session across multiple applications and tech stacks
 
+# Using the Connectifi sandbox directory
+
+You can use Connectifi’s free sandbox directory to try out the above with your own applications!  Just load the agent module in your app and use this code to make the connection:
+
+```js
+ const fdc3 = await createAgent(
+              `https://dev.connectifi-interop.com`,
+              `*@sandbox`,
+            );
+```
+
+**note:** the '*' in '*@sandbox' is a convention for unregistered apps to connect to what's called an open directory.  Since the sandbox directory is meant to be for development purposes, it doesn't require registry or identity validation of the apps connecting in to it.

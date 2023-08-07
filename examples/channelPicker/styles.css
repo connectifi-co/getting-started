@@ -1,0 +1,23 @@
+#picker {
+    display:flex;
+}
+
+#picker .channel {
+    height:4rem;
+    width:4rem;
+    border-radius: .6rem;
+    margin:.6rem;
+    transition: opacity .3s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: sans-serif;
+    color:#fff;
+}
+
+#picker .channel:hover {
+    cursor: pointer;
+    opacity:.6;
+    transition: opacity .3s ease-in;
+}

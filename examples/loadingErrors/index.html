@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/examples/styles.css">
+        <link rel="stylesheet" href="./styles.css">
+        <script type="module" src="./main.ts"></script>
+    </head>
+    <body>
+        <div class='content'>
+            <div class='row description'>
+                Loading and error state for the Agent
+            </div>
+            <div class="row">
+                <div id="loaderEl" class="loader active"></div>
+            </div>
+            <div class="row">
+                <div id="errorEl" class="error"></div>
+            </div>
+            <div class="row">
+                <button id="raiseIntent" class='action'>raise intent</button>
+                <button id="raiseContext" class='action'>raise intent for context</button>
+                <button id="callOpen" class='action'>call open</button>
+            </div>
+        </div>
+    </body>
+</html>

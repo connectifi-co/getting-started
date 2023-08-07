@@ -1,0 +1,40 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="/examples/styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="./main.ts"></script>
+</head>
+
+<body>
+  <div class='content'>
+    <div class='row description'>
+      Custom intent resolver with a modal dialog style.
+    </div>
+    <div class='row'>
+      <button class='action' id='intentButton'>raise intent</button>
+    </div>
+    <div class='row'>
+      <button class='action' id='contextButton'>raise intent for context</button>
+    </div>
+  </div>
+  <div id="resolver" class="resolver">
+    <div class="header">
+      <div class="logo">
+        <img src='https://dev.connectifi-interop.com/connectifi-logo-white.png' />
+      </div>
+      <div class="title">
+        <span></span>
+      </div>
+      <div class="dismiss">
+        <div>
+          <span>&#215;</span>
+        </div>
+      </div>
+    </div>
+    <div class="list"></div>
+  </div>
+  <div id="resolverBG" class="resolverBackground"></div>
+</body>
+
+</html>
