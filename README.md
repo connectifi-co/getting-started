@@ -135,7 +135,7 @@ There are number of ways that applications can listen for and respond to FDC3 ev
 
 ### addContextListener
 
-Context listeners added to the top-level fdc3 API will be triggered when a matching context is broadcast from a connected app.  In general, an apps are *connected* when they are joined to the same user/system channel (see *joiningChannels* below).  When setting a context listener, a context *type* can be specified as a filter on context events to listen to.  If a filter is specified.  All context events, regardless of type, will be sent to the listener.   The listener has a callback function which passed the broadcast FDC3 context.  Any number of listeners can be set and will be called when a matching context broadcast occurs.
+Context listeners added to the top-level fdc3 API will be triggered when a matching context is broadcast from a connected app.  In general, apps are *connected* when they are joined to the same user/system channel (see *joiningChannels* below).  When setting a context listener, a context *type* can be specified as a filter on context events to listen to.  If a filter is specified.  All context events, regardless of type, will be sent to the listener.   The listener has a callback function which passed the broadcast FDC3 context.  Any number of listeners can be set and will be called when a matching context broadcast occurs.
 
 Adding a context listener looks like this:
 
