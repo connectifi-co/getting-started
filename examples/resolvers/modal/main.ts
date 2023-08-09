@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     button.addEventListener("click", (event: MouseEvent) => {
       fdc3?.raiseIntent("ViewChart", {
         type: "fdc3.instrument",
-        id: { ticker: "IBM" },
+        name: "International Business Machines",
+        id: { ticker: "IBM", },
       });
     });
   }
@@ -26,7 +27,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     contextButton.addEventListener("click", (event: MouseEvent) => {
       fdc3?.raiseIntentForContext({
         type: "fdc3.instrument",
-        id: { ticker: "IBM" },
+        name: "International Business Machines",
+        id: { ticker: "IBM",},
       });
     });
   }

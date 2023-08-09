@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     button.addEventListener("click", () => {
       fdc3?.raiseIntent("ViewChart", {
         type: "fdc3.instrument",
-        id: { ticker: "IBM" },
+        name: "International Business Machines",
+        id: { ticker: "IBM",},
       });
       const y = button.offsetTop + button.clientHeight + 10;
       const x = button.offsetLeft;
@@ -29,7 +30,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     ifcButton.addEventListener("click", () => {
       fdc3?.raiseIntentForContext({
         type: "fdc3.instrument",
-        id: { ticker: "IBM" },
+        name: "International Business Machines",
+        id: { ticker: "IBM",},
       });
       const y = ifcButton.offsetTop + ifcButton.clientHeight + 10;
       const x = ifcButton.offsetLeft;
