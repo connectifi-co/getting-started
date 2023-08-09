@@ -1,0 +1,57 @@
+{
+    "name": "@connectifi/getting-started",
+    "private": false,
+    "version": "0.0.2",
+    "type": "module",
+    "main": "./dist/main.umd.cjs",
+    "module": "./dist/main.js",
+    "types": "dist/main.d.ts",
+    "exports": {
+      ".": {
+        "import": "./dist/main.js",
+        "require": "./dist/main.umd.cjs"
+      }
+    },
+    "files": [
+      "dist"
+    ],
+    "scripts": {
+      "build": "npm run clean && tsc && vite build",
+      "clean": "rm -rf dist",
+      "dev": "vite --host",
+      "preview": "vite preview",
+      "lint:scripts": "eslint . --ext .ts",
+      "lint:styles": "stylelint ./**/*.{css,scss}",
+      "format:scripts": "prettier . --write",
+      "format:styles": "stylelint ./**/*.{css,scss} --fix",
+      "format": "npm run format:scripts && npm run format:styles"
+    },
+    "dependencies": {
+      "@finos/fdc3": "^2.0.3"
+    },
+    "devDependencies": {
+      "@types/jsdom": "^20.0.0",
+      "@types/node": "^18.7.16",
+      "@typescript-eslint/eslint-plugin": "^5.36.2",
+      "@typescript-eslint/parser": "^5.36.2",
+      "dts-bundle-generator": "^6.13.0",
+      "eslint": "^8.23.0",
+      "eslint-config-prettier": "^8.5.0",
+      "eslint-plugin-prettier": "^4.2.1",
+      "lint-staged": "^13.0.3",
+      "prettier": "^2.7.1",
+      "rollup-plugin-typescript2": "^0.34.1",
+      "stylelint": "^14.11.0",
+      "stylelint-config-recommended": "^9.0.0",
+      "stylelint-config-sass-guidelines": "^9.0.1",
+      "ts-node": "^10.9.1",
+      "typescript": "^5.1.6",
+      "vite": "^3.1.0"
+    },
+    "keywords": [
+      "fdc3",
+      "connectifi",
+      "typescript"
+    ]
+  }
+  

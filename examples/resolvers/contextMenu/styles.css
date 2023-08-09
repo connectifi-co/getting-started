@@ -1,0 +1,146 @@
+
+
+.resolver {
+    background-color: #eee;
+    position: fixed;
+    z-index: 9999;
+    font-family: sans-serif;
+    filter: var(--drop-shadow);
+    display: none;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: .3s;
+    transition-property: display;
+    transition-duration: .5s;
+    color: #111;
+  }
+  
+  .resolver.open {
+    display:block;
+    opacity:1;
+    transition-property: opacity;
+    transition-duration: .3s;
+  }
+  
+  
+  .resolver .list {
+    overflow: scroll;
+    font-size: 1rem;
+  }
+  
+  .resolver .list .item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding:.3rem;
+    padding-left:.6rem;
+    overflow:hidden;
+    align-items:center;
+    cursor: pointer;
+  }
+  
+  .resolver .list .item:hover {
+    background-color: #e7e7e7;
+  }
+  
+  .resolver .list .group {
+    font-size:.9rem;
+    padding: .25rem .75rem;
+    border-top: .5px solid #bbb;
+    border-bottom: .5px solid #bbb;
+  }
+  
+  .resolver .list .item .icon-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  
+  .resolver .list .item .icon {
+    margin-right: .4rem;
+    width:1.2rem;
+    height:1.2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .resolver .list .item .title {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .resolver .list .item .info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-right: .4rem;
+  }
+  
+  .resolver .list .item .info > div {
+    margin-left: .4rem;
+    width:1.2rem;
+    height:1.2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: .9em;
+    padding: 0.3em;
+  }
+  
+  .resolver .list .item .info .agent > div {
+    margin-top: .1em;
+  }
+  
+  .resolver .list .item .info .more {
+    padding-top: .5em;
+    width:1.2rem;
+    height:1.2rem;
+    background-color: lightgray;
+  }
+  
+  .resolver .list .item .info .more > span {
+    border-color: #aaa;
+    border-style: dashed;
+    border-width: 0 2px;
+  }
+  
+  .resolver .list .intentRow {
+    padding-top:.6rem;
+    padding-bottom:.6rem;
+    background-color: #ddd; 
+    border-top: 1px solid #bbb;
+  }
+  
+  .resolver .list .intentTitle {
+    font-size: 1.25rem;
+    padding: 0 .5em;
+  }
+  
+  .resolverBackground {
+    background-color:#111;
+    opacity:.2;
+    z-index:999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+  }
+  
+  .resolverBackground.open {
+    display: block;
+  }
+  
+  .resolver .appMenu {
+    display:none;
+    position: absolute;
+    z-index: 999999;
+    background: #ccc;
+    filter: var(--drop-shadow);
+  }
+
+  .resolver .appMenu.show {
+    display:flex;
+    flex-flow: column;
+  }
