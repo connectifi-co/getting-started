@@ -6,13 +6,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     "example@sandbox",
     {
       logLevel: "debug",
-      onLoading: () => {
-        const errorEl = document.getElementById("errorEl");
-        errorEl?.classList.add('show');
-        const loaderEl = document.getElementById("loaderEl");
-        loaderEl?.classList.add("active");
-      },
-      onLoadingStopped: () => {
+      onWorkingChanged: (working: boolean) => {
+        if (working) {
+          const errorEl = document.getElementById("errorEl");
+          errorEl?.classList.add("show");
+          const loaderEl = document.getElementById("loaderEl");
+          loaderEl?.classList.add("active");
+          return;
+        }
+
         const loaderEl = document.getElementById("loaderEl");
         loaderEl?.classList.remove("active");
       },
@@ -23,35 +25,38 @@ document.addEventListener("DOMContentLoaded", async () => {
   const contextButton = document.getElementById("raiseContext");
   const openButton = document.getElementById("callOpen");
 
-  const displayError = (error : string) => {
+  const displayError = (error: string) => {
     const errorEl = document.getElementById("errorEl");
-    if (errorEl){
-        errorEl.classList.add('show');
-        errorEl.textContent = error;
+    if (errorEl) {
+      errorEl.classList.add("show");
+      errorEl.textContent = error;
     }
-  }
+  };
 
   intentButton?.addEventListener("click", async () => {
     try {
-        await fdc3?.raiseIntent("fakeIntent", { type: "fakeContext" });
+      await fdc3?.raiseIntent("fakeIntent", { type: "fakeContext" });
     } catch (err) {
-        displayError((err as Error).message);
+      displayError((err as Error).message);
     }
   });
 
   contextButton?.addEventListener("click", async () => {
     try {
-        await fdc3?.raiseIntentForContext({type:"fakeContext"});
+      await fdc3?.raiseIntentForContext({ type: "fakeContext" });
     } catch (err) {
-        displayError((err as Error).message);
+      displayError((err as Error).message);
     }
   });
 
   openButton?.addEventListener("click", async () => {
     try {
-        await fdc3?.open('fakeAppName',{type: "fdc3.instrument", id:{ticker:"MSFT"}});
+      await fdc3?.open("fakeAppName", {
+        type: "fdc3.instrument",
+        id: { ticker: "MSFT" },
+      });
     } catch (err) {
-        displayError((err as Error).message);
+      displayError((err as Error).message);
     }
   });
 });

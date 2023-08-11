@@ -7,8 +7,8 @@ import {
   document.addEventListener('DOMContentLoaded',async () => {
     const fdc3 = await createAgent('https://dev.connectifi-interop.com', 'example@sandbox', {
         headless:true,
-        joinChannelHandler: joinHandler,
-        leaveChannelHandler: leaveHandler,
+        onChannelJoined: joinHandler,
+        onChannelLeft: leaveHandler,
     });
 
     const picker = document.getElementById('picker');
