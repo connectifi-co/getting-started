@@ -153,7 +153,7 @@ Adding a context listener looks like this:
 
 ```js
 
-const listener = fdc3.addContextListener('fdc3.instrument', (context) => {
+const listener = await fdc3.addContextListener('fdc3.instrument', (context) => {
     console.log("got an instrument context!", context);
 });
 
@@ -167,7 +167,7 @@ Adding an intent listener looks like this:
 
 ```js
 
-const listener = fdc3.addIntentListener('ViewChart', (context) => {
+const listener = await fdc3.addIntentListener('ViewChart', (context) => {
     drawChart(context);
 });
 
@@ -190,7 +190,7 @@ listener.unsubscribe();
 
 ### joiningChannels
 
-Apps can be joined to a system channel (*user* channel in FDC3 2.0) by the end user.  This effectively links any apps on a channel, so that a call to *fdc3.broadcast* is routed to context listeners set through  *fdc3.addContextListener* from any other app on the same channel.  An app can only be joined to one channel at a time.
+Apps can be joined to a user channel (*system* channel in FDC3 1.x) by the end user.  This effectively links any apps on a channel, so that a call to *fdc3.broadcast* is routed to context listeners set through  *fdc3.addContextListener* from any other app on the same channel.  An app can only be joined to one channel at a time.
 
 Channels can be joined programmatically or using UI.
 
@@ -203,7 +203,7 @@ Joining a channel through the FDC3 API looks like this:
 
 ```js
 
-    await fdc3.joinChannel('red');
+    await fdc3.joinUserChannel('red');
     console.log('red channel joined!');
 
     //you can also leave the channel

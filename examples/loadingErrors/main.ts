@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     "https://dev.connectifi-interop.com",
     "example@sandbox",
     {
-      logLevel: "debug",
       onWorkingChanged: (working: boolean) => {
         if (working) {
           const errorEl = document.getElementById("errorEl");

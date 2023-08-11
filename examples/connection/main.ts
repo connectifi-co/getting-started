@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     "https://dev.connectifi-interop.com",
     "example@sandbox",
     {
-      logLevel: "debug",
       headless: true,
       onConnected: () => {
         const alertCon = document.getElementById("connected");
