@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     "https://dev.connectifi-interop.com",
     "example@sandbox"
   );
-    (window as any).fdc3 = fdc3;
-    document.dispatchEvent(new CustomEvent("fdc3Ready",{}));
+    if (fdc3){
+        (window as any).fdc3 = fdc3;
+        document.dispatchEvent(new CustomEvent("fdc3Ready",{}));
+    }
 });
