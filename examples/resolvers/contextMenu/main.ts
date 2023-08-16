@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     "example@sandbox",
     {
       headless: true,
-      resolverHandler: resolver,
+      handleIntentResolution: resolver,
     }
   );
 

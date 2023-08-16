@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     "example@sandbox",
     {
       headless: true,
-      openHandler: (message: ConnectifiOpenMessage) => {
+      handleOpen: (message: ConnectifiOpenMessage) => {
         const targetContainer = document.getElementById("targetContainer");
         let target = document.getElementById("target") as HTMLIFrameElement;
         //recreate the iFrame to avoid cross-origin issues

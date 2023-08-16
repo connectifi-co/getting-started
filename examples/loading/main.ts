@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     "example@sandbox",
     {
       logLevel: "debug",
-      onLoading: () => {
-        const loaderEl = document.getElementById("loaderEl");
-        loaderEl?.classList.add("active");
-      },
-      onLoadingStopped: () => {
+      onWorkingChanged(working) {
+        if (working) {
+          const loaderEl = document.getElementById("loaderEl");
+          loaderEl?.classList.add("active");
+          return;
+        }
+
         const loaderEl = document.getElementById("loaderEl");
         loaderEl?.classList.remove("active");
       },
@@ -23,11 +25,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const openButton = document.getElementById("callOpen");
 
   intentButton?.addEventListener("click", () => {
-    fdc3?.raiseIntent("ViewNews", { type: "fdc3.instrument", id:{ticker:"IBM"} });
+    fdc3?.raiseIntent("ViewNews", {
+      type: "fdc3.instrument",
+      id: { ticker: "IBM" },
+    });
   });
 
   joinButton?.addEventListener("click", () => {
-    fdc3?.joinUserChannel('red');
+    fdc3?.joinUserChannel("red");
   });
 
   leaveButton?.addEventListener("click", () => {
@@ -35,6 +40,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   openButton?.addEventListener("click", () => {
-    fdc3?.open('badAppName',{type: "fdc3.instrument", id:{ticker:"MSFT"}});
+    fdc3?.open("badAppName", {
+      type: "fdc3.instrument",
+      id: { ticker: "MSFT" },
+    });
   });
 });
