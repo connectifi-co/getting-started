@@ -7,15 +7,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       headless: true,
       handleOpen: (message: ConnectifiOpenMessage) => {
-        const targetContainer = document.getElementById("targetContainer");
-        let target = document.getElementById("target") as HTMLIFrameElement;
-        //recreate the iFrame to avoid cross-origin issues
-        if (target && targetContainer) {
-          targetContainer.removeChild(target);
-          target = document.createElement("iframe") as HTMLIFrameElement;
-          target.id = "target";
-          targetContainer.appendChild(target);
-          target.src = message.url || "about:blank";
+        if (message.url){
+          window.location.href = message.url;
         }
       },
     }
