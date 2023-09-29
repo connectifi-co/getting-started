@@ -3,7 +3,7 @@ import { createAgent, ConnectifiOpenMessage } from "@connectifi/agent-web";
 document.addEventListener("DOMContentLoaded", async () => {
   const fdc3 = await createAgent(
     "https://dev.connectifi-interop.com",
-    "example@test",
+    "example@sandbox",
     {
       headless: true,
       handleOpen: (message: ConnectifiOpenMessage) => {
