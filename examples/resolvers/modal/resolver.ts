@@ -236,15 +236,33 @@ export const resolver = (
     }
   }
   // resolver "title bar close icon"
-  resolverElem
-    ?.querySelector(".header .dismiss > div")
-    ?.addEventListener("click", () => {
-      if (closeResolver) {
-        closeResolver(true);
-      }
-      hideResolver();
-    });
 
+    //create the dismiss button
+    const createDismiss = () :HTMLElement => {
+      const dismissContainer = document.createElement('div');
+      dismissContainer.classList.add('dismiss');
+      const innerContainer = document.createElement('div');
+      dismissContainer.appendChild(innerContainer);
+      const dismissContent = document.createElement('span');
+      dismissContent.innerHTML = `&#215;`;
+      innerContainer.appendChild(dismissContent);
+      innerContainer.addEventListener('click', () => {
+        if (closeResolver) {
+          closeResolver();
+        }
+        hideResolver();
+      });
+      return dismissContainer;
+    };
+
+    const header = resolverElem?.querySelector('.header');
+    if (header){
+        const dismiss = header.querySelector(".dismiss");
+        if (dismiss){
+          header.removeChild(dismiss);
+        }
+        header.appendChild(createDismiss());
+    }
   // resolver "window title"
   const resTitle = resolverElem?.querySelector(
     ".header .title span"
