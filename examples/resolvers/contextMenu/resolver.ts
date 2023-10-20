@@ -3,8 +3,8 @@ import {
   AppIntentResult,
   ResolutionType,
   FDC3Agent,
-  AppInstanceType,
-  ConnectifiApp,
+  IntentResultType,
+  ConnectifiAppMetadata,
   ResolveCallback,
   CloseCallback,
 } from "@connectifi/agent-web";
@@ -16,16 +16,16 @@ let resolverElem: HTMLElement | null = null;
 let interopHost: string = "https://dev.connectifi-interop.com";
 
 // for sorting/grouping apps by AppInstanceType
-const appsorter = (a: ConnectifiApp, b: ConnectifiApp) => {
+const appsorter = (a: ConnectifiAppMetadata, b: ConnectifiAppMetadata) => {
   if (a.type == b.type) {
-    if (a.type === AppInstanceType.Window) {
-      if (a.proximity === b.proximity) {
+    if (a.type === 'window') {
+      if (a.proximity === b.proximity && b.lastUpdate && a.lastUpdate) {
         return b.lastUpdate - a.lastUpdate;
       }
       return a.proximity - b.proximity;
     }
     return 0;
-  } else if (a.type === AppInstanceType.Directory) {
+  } else if (a.type === 'directory') {
     return 1;
   } else {
     return -1;
@@ -45,8 +45,8 @@ const getContextDisplayName = (context: any) => {
   return name;
 };
 
-const getAppTypeDisplayName = (appType: AppInstanceType) => {
-  if (appType === AppInstanceType.Directory) {
+const getAppTypeDisplayName = (appType: IntentResultType) => {
+  if (appType === 'directory') {
     return "Open New";
   }
   return "Send To";
@@ -79,7 +79,7 @@ const createAppRows = (
 ) => {
   intentRes.apps.sort(appsorter);
   let group: string = "";
-  intentRes.apps.forEach((app: ConnectifiApp) => {
+  intentRes.apps.forEach((app: ConnectifiAppMetadata) => {
     if (app.type !== group) {
       const groupRow = document.createElement("div");
       groupRow.className = "group";
@@ -97,16 +97,16 @@ const createAppRows = (
 };
 
 const createAppRow = (
-  app: ConnectifiApp,
+  app: ConnectifiAppMetadata,
   intent: string,
   context: any,
   bridge?: boolean
 ): HTMLElement => {
-  const isAppSecure = (app: ConnectifiApp) => {
+  const isAppSecure = (app: ConnectifiAppMetadata) => {
     return app.url && app.url.startsWith("https");
   };
 
-  const getAppTitle = (app: ConnectifiApp): string => {
+  const getAppTitle = (app: ConnectifiAppMetadata): string => {
     const title = app.title || app.name;
     const instTitle = app.instanceTitle;
     if (!instTitle) {
@@ -116,7 +116,7 @@ const createAppRow = (
     if (title && !instTitle.startsWith(title)) {
       return `${title} - ${app.instanceTitle}`;
     } else if (instTitle) {
-      return app.instanceTitle;
+      return app.instanceTitle || '';
     }
     return "unknown";
   };
@@ -183,7 +183,7 @@ const createAppRow = (
   const infoNode: Element = document.createElement("div");
   infoNode.className = "info";
   infoNode.setAttribute("title", `proximity: ${app.proximity}`);
-  if (app.type !== AppInstanceType.Directory) {
+  if (app.type !== 'directory') {
     if (app.proximity > 1) {
       const appOS = app.os && app.os.toLocaleLowerCase();
       const agentNode: Element = document.createElement("div");
@@ -321,7 +321,7 @@ export const resolver = (
     "click",
     () => {
       if (closeResolver) {
-        closeResolver(true);
+        closeResolver();
       }
       hideResolver();
     },
