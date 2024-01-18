@@ -84,9 +84,6 @@ const createAppRow = (
   context: any,
   bridge?: boolean
 ): HTMLElement => {
-  const isAppSecure = (app: ConnectifiAppMetadata) => {
-    return app.url && app.url.startsWith("https");
-  };
 
   const getAppTitle = (app: ConnectifiAppMetadata): string => {
     const title = app.title || app.name;
@@ -130,7 +127,7 @@ const createAppRow = (
       "style",
       `
         background-image: url('${interopHost}/${
-        isAppSecure(app) ? "lock" : "warning"
+        app.isSecure ? "lock" : "warning"
       }.svg');
         `
     );
@@ -158,7 +155,7 @@ const createAppRow = (
   const titleNode: Element = document.createElement("div");
   titleNode.className = "title";
   titleNode.textContent = appTitle;
-  titleNode.setAttribute("title", `${appTitle}\n${app.url}`);
+  titleNode.setAttribute("title", `${appTitle}`);
   row.appendChild(titleNode);
 
   // right side icons - more info
