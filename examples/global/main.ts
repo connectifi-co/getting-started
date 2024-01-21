@@ -16,7 +16,7 @@ document.addEventListener("fdc3Ready", () => {
 document.addEventListener("DOMContentLoaded", async () => {
   const fdc3 = await createAgent(
     "https://dev.connectifi-interop.com",
-    "example@sandbox"
+    "test@sandbox"
   );
     if (fdc3){
         (window as any).fdc3 = fdc3;

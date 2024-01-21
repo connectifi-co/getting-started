@@ -28,7 +28,7 @@
     },
     "dependencies": {
       "@finos/fdc3": "^2.0.3",
-      "@connectifi/agent-web": "2.2.0"
+      "@connectifi/agent-web": "latest"
     },
     "devDependencies": {
       "@types/jsdom": "^20.0.0",

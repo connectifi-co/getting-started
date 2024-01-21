@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       await fdc3?.raiseIntent("fakeIntent", { type: "fakeContext" });
     } catch (err) {
-      displayError((err as Error).message);
+      displayError(err);
     }
   });
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       await fdc3?.raiseIntentForContext({ type: "fakeContext" });
     } catch (err) {
-      displayError((err as Error).message);
+      displayError(err);
     }
   });
 
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         id: { ticker: "MSFT" },
       });
     } catch (err) {
-      displayError((err as Error).message);
+      displayError(err);
     }
   });
 });
