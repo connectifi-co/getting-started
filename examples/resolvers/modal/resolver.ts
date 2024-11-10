@@ -195,7 +195,7 @@ const createAppRow = (
 
   row.addEventListener("click", (event: MouseEvent) => {
     if (resolveResolver) {
-      resolveResolver(app, intent, context, bridge || false);
+      resolveResolver({selected: app, intent, context, bridge: bridge || false});
       hideResolver();
       event.stopPropagation();
     }
