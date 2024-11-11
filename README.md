@@ -32,7 +32,16 @@ Install into your code using NPM:
 npm i @connectifi/agent-web
 ```
 
-or, access via CDN:
+access via CDN from the service directly:
+
+`https://[service-host]/agent/main.bundle.js`  
+
+e.g.:
+```
+ import { createAgent } from "https://dev.connectifi-interop.com/agent/main.bundle.js";
+```
+
+Or from Unpkg:
 
 `https://unpkg.com/@connectifi/agent-web/dist/main.js`
 

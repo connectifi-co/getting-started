@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/examples/styles.css">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <div class='content'>
+            <div class='row description'>
+                Global FDC3 Declaration, loading directly from service.
+            </div>
+            <div class='row'>
+                <div class='note'>
+                    With this example, the agent is loaded directly from the service, rather than NPM.
+                </div>
+            </div>
+            <div class="row">
+                <div id="ready" class="alert">FDC3 READY</div>
+                <div id="waiting" class="alert show">WAITING</div>
+            </div>
+        </div>
+    </body>
+    <script type="module">
+        import { createAgent } from "https://dev.connectifi-interop.com/agent/main.bundle.js";
+
+        document.addEventListener("DOMContentLoaded", async () => {
+        const fdc3 = await createAgent(
+                    "https://dev.connectifi-interop.com",
+                    "test@sandbox"
+                );
+            if (fdc3){
+                window.fdc3 = fdc3;
+                document.dispatchEvent(new CustomEvent("fdc3Ready",{}));
+                const alertReady = document.getElementById("ready");
+                const alertWaiting = document.getElementById("waiting");
+                if (alertReady) {
+                alertReady.classList.add("show");
+                }
+                if (alertWaiting) {
+                alertWaiting.classList.remove("show");
+                }
+            }
+        });
+    </script>
+</html>
