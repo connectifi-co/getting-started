@@ -5,7 +5,7 @@ import {
   let selectedChannel : string | null = null;
 
   document.addEventListener('DOMContentLoaded',async () => {
-    const fdc3 = await createAgent('https://dev.connectifi-interop.com', 'example@sandbox', {
+    const fdc3 = await createAgent('https://platform.connectifi.app', 'example@sandbox', {
         headless:true,
         onChannelJoined: joinHandler,
         onChannelLeft: leaveHandler,

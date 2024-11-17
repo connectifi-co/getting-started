@@ -12,7 +12,7 @@ let resolverOpen: boolean = false;
 let resolveResolver: ResolveCallback | undefined;
 let closeResolver: CloseCallback | undefined;
 let resolverElem: HTMLElement | null = null;
-let interopHost: string = "https://dev.connectifi-interop.com";
+let interopHost: string = "https://platform.connectifi.app";
 
 // for sorting/grouping apps by AppInstanceType
 const appsorter = (a: ConnectifiAppMetadata, b: ConnectifiAppMetadata) => {

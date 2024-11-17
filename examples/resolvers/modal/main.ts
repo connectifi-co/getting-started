@@ -3,8 +3,8 @@ import { resolver } from "./resolver";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const fdc3 = await createAgent(
-    "https://dev.connectifi-interop.com",
-    "example@sandbox",
+    "https://platform.connectifi.app",
+    "example@_global.sandbox",
     {
       headless: true,
       handleIntentResolution: resolver,

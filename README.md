@@ -19,7 +19,7 @@ Connectifi is built to work with the brand and UX of your platform. To help you 
 
 Got a use case you don't see here? [Create an issue](https://github.com/connectifi-co/getting-started/issues/new) and let us know about it.
 
-**note:** For examples of how to use FDC3 API, the best place to start is with the [Connectifi FDC3 Sandbox](https://apps.connectifi-interop.com/sandbox).
+**note:** For examples of how to use FDC3 API, the best place to start is with the [Connectifi FDC3 Sandbox](https://demos.connectifi.app/sandbox).
 # Setting up the Agent
 
 The Connectifi Agent is a small javascript module that lives in your application and is used to make and manage the connection to the Connectifi service and translate this into a standard FDC3 API for the consuming application.   The module also provides some default UI which can be fully customized.
@@ -38,7 +38,7 @@ access via CDN from the service directly:
 
 e.g.:
 ```
- import { createAgent } from "https://dev.connectifi-interop.com/agent/main.bundle.js";
+ import { createAgent } from "https://platform.connectifi.app/agent/main.bundle.js";
 ```
 
 Or from Unpkg:
@@ -55,7 +55,7 @@ To connect to a directory, use the `createAgent` function exported from the agen
 import { createAgent } from '@connectifi/agent-web';
 
         const fdc3 = await createAgent(
-              `https://[ME].connectifi-interop.com`,
+              `https://platform.connectifi.app`,
               `$[appName]@$[directoryName]`,
             );
 
@@ -66,18 +66,18 @@ Note: Because the FDC3 api is returned as a scoped variable, your application ca
 
 ## Using the Connectifi Sandbox Directory
 
-You can use Connectifi’s [FDC3 Sandbox](https://apps.connectifi-interop.com/sandbox) to build and test your own FDC3 applications.  Use this code to make the connection:
+You can use Connectifi’s [FDC3 Sandbox](https://demos.connectifi.app/sandbox) to build and test your own FDC3 applications.  Use this code to make the connection:
 
 ```js
 
         const fdc3 = await createAgent(
-              `https://dev.connectifi-interop.com`,
-              `*@sandbox`,
+              `https://platform.connectifi.app`,
+              `*@_global.sandbox`,
             );
 
 ```
 
-**note:** the '*' in '*@sandbox' is a convention for unregistered apps to connect to what's called an *open* directory.  Since the sandbox directory is meant to be for development purposes only, it doesn't require registry or identity validation of the apps connecting in to it.
+**note:** the '*' in '*@directory' is a convention for unregistered apps to connect to what's called an open directory.  Since the sandbox directory is meant to be for development purposes, it doesn't require registry or identity validation of the apps connecting to it.  '_global.sandbox' is the fully qualified name for Connectifi's 'sandbox' directory.
 
 # Adding FDC3 to Your App
 
@@ -261,16 +261,3 @@ App channels are very useful for more advanced orchestration of behavior between
 - tracking state of a singleton application across multiple tech stacks
 - publishing application data being shared outside of intents or other user actions
 - synchronizing user state for a session across multiple applications and tech stacks
-
-# Using the Connectifi sandbox directory
-
-You can use Connectifi’s free sandbox directory to try out the above with your own applications!  Just load the agent module in your app and use this code to make the connection:
-
-```js
- const fdc3 = await createAgent(
-              `https://dev.connectifi-interop.com`,
-              `*@sandbox`,
-            );
-```
-
-**note:** the '*' in '*@sandbox' is a convention for unregistered apps to connect to what's called an open directory.  Since the sandbox directory is meant to be for development purposes, it doesn't require registry or identity validation of the apps connecting in to it.
