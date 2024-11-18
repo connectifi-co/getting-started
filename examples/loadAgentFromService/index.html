@@ -20,12 +20,12 @@
         </div>
     </body>
     <script type="module">
-        import { createAgent } from "https://dev.connectifi-interop.com/agent/main.bundle.js";
+        import { createAgent } from "https://platform.connectifi.app/agent/main.bundle.js";
 
         document.addEventListener("DOMContentLoaded", async () => {
         const fdc3 = await createAgent(
-                    "https://dev.connectifi-interop.com",
-                    "test@sandbox"
+                    "https://platform.connectifi.app",
+                    "test@_global.sandbox"
                 );
             if (fdc3){
                 window.fdc3 = fdc3;

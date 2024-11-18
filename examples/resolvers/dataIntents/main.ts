@@ -100,8 +100,8 @@ const renderDetails = (data: CompanyDetails) => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const fdc3 = await createAgent(
-    "https://dev.connectifi-interop.com",
-    "example@DataIntents",
+    "https://platform.connectifi.app",
+    "example@_global.connectors",
     {
       headless: true,
       handleIntentResolution: resolver,
