@@ -47,3 +47,9 @@ export interface CompanyDetails extends Context {
     title: string;
     text: string;
   }
+
+  export interface List extends Context {
+    type: 'connect.list';
+    listType: string;
+    items: Array<Context>;
+  }

@@ -1,6 +1,7 @@
 import { createAgent } from "@connectifi/agent-web";
 import { resolver } from "./resolver";
-import { CompanyDetails, InstrumentPrice, Summary } from "./types";
+import { Context, Instrument } from '@finos/fdc3';
+import { CompanyDetails, InstrumentPrice, Summary, List } from "./types";
 
 
 const createHeader = (title: string, subtitle?: string): HTMLElement => {
@@ -48,6 +49,31 @@ const setLoading = () => {
     target.appendChild(row);
   }
 };
+
+const renderList = (data: List) => {
+  const target = document.getElementById('intentResult');
+  const renderItem = (item: Context) => {
+    if (data.listType === 'fdc3.instrument' && target){
+      renderInstrument(item as Instrument, target);
+    }
+  };
+  if (target){
+    target.innerHTML = '';
+    console.log('render list', data.items);
+    data.items.forEach((item) => {
+      renderItem(item);
+    });
+  }
+};
+
+const renderInstrument = (data: Instrument, target: HTMLElement) => {
+  if (target) { 
+    const header = createHeader(data.name || 'Instrument');
+    target.appendChild(header);
+    const summaryRow = createDataRow('ticker', data.id?.ticker || '');
+    target.appendChild(summaryRow);
+  }
+}
 
 const renderSummary = (data: Summary) => {
   const target = document.getElementById('intentResult');
@@ -146,6 +172,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         const intentResult = await fdc3.raiseIntent("Summarize", ticker);
         const dataResult = await intentResult.getResult() as Summary;
         renderSummary(dataResult);
+      }
+    });
+  }
+
+  const similarButton = document.getElementById("getSimilarButton");
+  if (similarButton) {
+    similarButton.addEventListener("click", async (event: MouseEvent) => {
+      if (fdc3){
+        setLoading();
+        const intentResult = await fdc3.raiseIntent("FindSimilar", ticker);
+        const dataResult = await intentResult.getResult() as List;
+        console.log('result!', dataResult);
+        renderList(dataResult);
       }
     });
   }
